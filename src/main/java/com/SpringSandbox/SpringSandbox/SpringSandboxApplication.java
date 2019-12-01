@@ -1,9 +1,16 @@
 package com.SpringSandbox.SpringSandbox;
 
 import com.SpringSandbox.SpringSandbox.beans.*;
+import com.SpringSandbox.SpringSandbox.beans.AnnotationConfiuguration.MyAutoWiredBeanOne;
+import com.SpringSandbox.SpringSandbox.beans.AnnotationConfiuguration.MyRequiredBean;
+import com.SpringSandbox.SpringSandbox.beans.JavaConfiguration.JavaConfigOne;
+import com.SpringSandbox.SpringSandbox.beans.JavaConfiguration.JavaConfigTwo;
+import com.SpringSandbox.SpringSandbox.beans.NamedAutoWiring.AutoWiringOne;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -19,8 +26,12 @@ public class SpringSandboxApplication {
 //      beanLifecycleHooks();
 //		singletonBean();
 //		prototypeBean();
-		innerBeans();
+//		innerBeans();
+//		autoWiringByName();
+//		annotationRequiredConfiguration();
+		annotationAutoWiredConfiguration();
 	}
+
 
 	public static void beanLifecycleHooks() {
 		//This is used to monitor lifecycle of a bean
@@ -92,5 +103,49 @@ public class SpringSandboxApplication {
 	public static void refsTypes() {
 		//
 		//The ref attribute
+	}
+	public static void autoWiringByName() {
+		//The Spring Container Handles Autowiring of dependencies. Autowiring will handle relationships between related
+		// beans. It cuts down on the amount of XML config needed
+		//https://www.tutorialspoint.com/spring/spring_beans_autowiring.htm
+
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("NamedAutoWiringBeans");
+		AutoWiringOne au = (AutoWiringOne) ctx.getBean("autoWiringOne");
+		au.autoWireTwoSpeak();
+
+		//To AutoWire by type is the exact same thing, the only difference is changing the XML to "byType"
+		//https://www.tutorialspoint.com/spring/spring_autowiring_bytype.htm
+
+		//To AutoWire by Constructor is also the same, in the XML though you have to change the autowire to 'constructor'
+		//and specify the default value https://www.tutorialspoint.com/spring/spring_autowiring_byconstructor.htm
+	}
+
+	public static void annotationRequiredConfiguration() {
+		//Easier than using xml to describe your dependency relationships. It's performed before XML Injection, so XML
+		//injection overrides annotation based configuration
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("RequiredBeanAutoConfig.xml");
+		MyRequiredBean rc = (MyRequiredBean) ctx.getBean("myRequiredBean");
+		System.out.println(rc.getRequired());
+	}
+
+	public static void annotationAutoWiredConfiguration() {
+		//One can autowire based on constructor, property, or setter
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("MyAutowiredBean.xml");
+		MyAutoWiredBeanOne rc = (MyAutoWiredBeanOne) ctx.getBean("MyAutoWiredBeanOne");
+		System.out.println(rc.getMyVal());
+	}
+	public static void javaBasedConfiguration() {
+		//Hate using XML? Well you don't have to! One can do all of it with Java
+
+		//Two annotations to use: @Bean and @Configuration.
+		//@Configuration will register your component with the Spring IoC Container as a source for beans.
+		//@Bean put on a method informs the IoC that a method will return an object registered as a bean in the
+		// application context
+
+		//This is how you get the Bean
+		ApplicationContext ctx = new AnnotationConfigApplicationContext(JavaConfigOne.class);
+		JavaConfigTwo jct = ctx.getBean(JavaConfigTwo.class);
+		jct.setMessage("Hello World");
+		jct.getMessage();
 	}
 }
