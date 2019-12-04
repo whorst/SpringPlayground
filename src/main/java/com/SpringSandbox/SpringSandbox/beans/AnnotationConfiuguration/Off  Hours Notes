@@ -1,0 +1,35 @@
+One is able to import a Bean from another Config class to use it, instead of having to create a new constructor for that Bean
+-- https://www.tutorialspoint.com/spring/spring_java_based_configuration.htm
+
+Annotation Configuration Allows for Lifecycle Hooks
+            public class Foo {
+               public void init() {
+                  // initialization logic
+               }
+               public void cleanup() {
+                  // destruction logic
+               }
+            }
+            @Configuration
+            public class AppConfig {
+               @Bean(initMethod = "init", destroyMethod = "cleanup" )
+               public Foo foo() {
+                  return new Foo();
+               }
+            }
+-- https://www.tutorialspoint.com/spring/spring_java_based_configuration.htm
+
+            
+One Can specify's a Bean scope (Prototype, Singleton, etc) using annotation based configuration
+            @Configuration
+            public class AppConfig {
+               @Bean
+               @Scope("prototype")
+               public Foo foo() {
+                  return new Foo();
+               }
+            }
+-- https://www.tutorialspoint.com/spring/spring_java_based_configuration.htm
+
+
+
