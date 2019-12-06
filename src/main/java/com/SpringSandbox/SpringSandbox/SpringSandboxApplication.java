@@ -17,6 +17,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 @SpringBootApplication
 public class SpringSandboxApplication {
 
+	//To Research: Lazy Bean Initialization, The SpringSecurityContext, Qualifier Annotations, Bean Factories
+
+	//The Difference between a BeanFactory and an Application Context, is a BeanFactory is an interface for interacting
+	//with Beans, while the ApplicationContext is used to provide configuration info for the application. The context
+	//actually uses the bean factory  https://dzone.com/articles/difference-between-beanfactory-and-applicationcont
+
 	public static void main(String[] args) {
 
 		SpringApplication.run(SpringSandboxApplication.class, args);
@@ -154,3 +160,4 @@ public class SpringSandboxApplication {
 		ctxTwo.getBean(ImportAnnotationTwo.class);
 	}
 }
+
