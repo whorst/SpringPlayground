@@ -1,8 +1,7 @@
 package com.SpringSandbox.SpringSandbox;
 
 import com.SpringSandbox.SpringSandbox.beans.*;
-import com.SpringSandbox.SpringSandbox.beans.AnnotationConfiuguration.MyAutoWiredBeanOne;
-import com.SpringSandbox.SpringSandbox.beans.AnnotationConfiuguration.MyRequiredBean;
+import com.SpringSandbox.SpringSandbox.beans.AnnotationConfiuguration.*;
 import com.SpringSandbox.SpringSandbox.beans.JavaConfiguration.JavaConfigOne;
 import com.SpringSandbox.SpringSandbox.beans.JavaConfiguration.JavaConfigTwo;
 import com.SpringSandbox.SpringSandbox.beans.NamedAutoWiring.AutoWiringOne;
@@ -13,8 +12,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import javax.swing.text.AbstractDocument;
 
 
 @SpringBootApplication
@@ -109,7 +106,7 @@ public class SpringSandboxApplication {
 		// beans. It cuts down on the amount of XML config needed
 		//https://www.tutorialspoint.com/spring/spring_beans_autowiring.htm
 
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("NamedAutoWiringBeans");
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("NamedAutoWiringBeans.xml");
 		AutoWiringOne au = (AutoWiringOne) ctx.getBean("autoWiringOne");
 		au.autoWireTwoSpeak();
 
@@ -147,5 +144,13 @@ public class SpringSandboxApplication {
 		JavaConfigTwo jct = ctx.getBean(JavaConfigTwo.class);
 		jct.setMessage("Hello World");
 		jct.getMessage();
+
+		//This is how you define the scope (Singleton, prototype) using Java Configuration
+		DefiningScope.getBean();
+
+		//Here is another way to import a Bean. Much easier
+		ApplicationContext ctxTwo = new AnnotationConfigApplicationContext(ImportAnnotationOne.class);
+		ctxTwo.getBean(ImportAnnotationOne.class);
+		ctxTwo.getBean(ImportAnnotationTwo.class);
 	}
 }
