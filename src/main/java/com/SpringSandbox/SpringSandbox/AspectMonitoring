@@ -1,0 +1,45 @@
+Aspect Oriented Programming is in regards to cross-cutting concerns as they appear in the application. The example used in here ]
+is pretty good:
+  https://www.javatpoint.com/spring-aop-tutorial
+
+A Join Point - Is the execution point of the method. 
+A Pointcut - Is a predicate which will join a method.
+
+**The @Aspect annotation can be used to attach monitoring to different methods.**
+  https://howtodoinjava.com/spring-aop-tutorial/
+  
+  @Aspect
+  public class EmployeeCRUDAspect {
+
+      @Before("execution(* EmployeeManager.getEmployeeById(..))")         //point-cut expression
+      public void logBeforeV1(JoinPoint joinPoint)
+      {
+          System.out.println("EmployeeCRUDAspect.logBeforeV1() : " + joinPoint.getSignature().getName());
+      }
+  }
+  
+**There are different ways to do aspect logging at different points in method execution. You can find some of the ways here:**
+  https://howtodoinjava.com/spring-aop-tutorial/
+  
+**Multiple Aspects for one method && Aspect Annotations:**
+  https://howtodoinjava.com/spring-aop/spring-aop-specifying-aspects-ordering/
+  
+**The different Aspect Types:**
+
+  https://howtodoinjava.com/interview-questions/top-spring-aop-interview-questions-with-answers/
+
+  Before advice : Advice that executes before a join point, but which does not have the ability to prevent execution flow proceeding 
+  to the join point (unless it throws an exception). To use this advice, use @Before annotation. 
+  
+  After returning advice : Advice to be 
+  executed after a join point completes normally. For example, if a method returns without throwing an exception. To use this advice, 
+  use @AfterReturning annotation. 
+  
+  After throwing advice : Advice to be executed if a method exits by throwing an exception. To use this 
+  advice, use @AfterThrowing annotation. 
+  
+  After advice : Advice to be executed regardless of the means by which a join point exits 
+  (normal or exceptional return). To use this advice, use @After annotation. 
+  
+  Around advice : Advice that surrounds a join point such as 
+  a method invocation. This is the most powerful kind of advice. To use this advice, use @Around annotation.
