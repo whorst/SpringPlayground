@@ -7,7 +7,7 @@ public class SpringEvents {
     //==================================================================================================================
 
 
-    //*Application Context, which we have sen thus far manages the lifecycle of the Beans. It is also responsible for
+    //*Application Context, which we have seen thus far manages the lifecycle of the Beans. It is also responsible for
     //publishing certain types of events when loading the Beans. For example ContextStartedEvent is started when the
     //Context is started.
 
@@ -28,5 +28,7 @@ public class SpringEvents {
 
     //Spring's event handling is single threaded. Until all receivers get the message, the processes are blocked.
     //Albert Recommends looking into the qualifier annotation
+
+    //There is an ApplicationListener interface which has a method onApplicationEvent()
 
 }

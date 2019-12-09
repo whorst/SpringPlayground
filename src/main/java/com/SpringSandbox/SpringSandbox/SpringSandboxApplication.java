@@ -1,5 +1,6 @@
 package com.SpringSandbox.SpringSandbox;
 
+import com.SpringSandbox.SpringSandbox.TheSpringContext.CEventHandlerClass;
 import com.SpringSandbox.SpringSandbox.beans.*;
 import com.SpringSandbox.SpringSandbox.beans.AnnotationConfiuguration.*;
 import com.SpringSandbox.SpringSandbox.beans.JavaConfiguration.JavaConfigOne;
@@ -26,15 +27,35 @@ public class SpringSandboxApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(SpringSandboxApplication.class, args);
-//      beanLifecycleHooks();
-//		singletonBean();
-//		prototypeBean();
-//		innerBeans();
-//		autoWiringByName();
-//		annotationRequiredConfiguration();
+//		beans();
+		events();
+
+	}
+
+	public static void beans() {
+		beanLifecycleHooks();
+		singletonBean();
+		prototypeBean();
+		innerBeans();
+		autoWiringByName();
+		annotationRequiredConfiguration();
 		annotationAutoWiredConfiguration();
 	}
 
+	public static void events() {
+		startStopEvents();
+	}
+
+	public static void startStopEvents(){
+		AbstractApplicationContext context = new ClassPathXmlApplicationContext("StartStopEvents.xml");
+
+		context.start();
+		//The Classes CStartEventHandler and CStopEventHandler
+		CEventHandlerClass cEventHandlerClass = (CEventHandlerClass)  context.getBean("cEventHandlerClass");
+		cEventHandlerClass.getMessage();
+
+		context.stop();
+	}
 
 	public static void beanLifecycleHooks() {
 		//This is used to monitor lifecycle of a bean
