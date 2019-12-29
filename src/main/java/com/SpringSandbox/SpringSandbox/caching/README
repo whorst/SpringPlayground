@@ -1,0 +1,38 @@
+From this tutorial https://spring.io/guides/gs/caching/
+
+The way caching works in SpringBoot is very interesting. Almost like method calls themselves are cached. If a method
+has been called with that parameter before, there's a cache hit. If not, its a miss. Use the @EnableCaching annotation in
+the Application Run method.
+
+https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-caching-provider-redis
+
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MathService {
+
+    @Cacheable("piDecimals")
+    public int computePiDecimal(int i) {
+        // ...
+    }
+
+}
+
+
+https://programmerfriend.com/ultimate-guide-to-redis-cache-with-spring-boot-2-and-spring-data-redis/
+
+We have a few annotations
+@EnableCaching - Above your main class...it enables caching!
+@CachePut      - Will put the return of the method into the cache regardless of whether or not one exists
+@CacheEvict    - This is a funny one. With this annotation, either evict all values of a cache or a specific key.
+    @CacheEvict(value = "first", key = "#cacheKey")
+    public void evictSingleCacheValue(String cacheKey) {}
+
+    @CacheEvict(value = "first", allEntries = true)
+    public void evictAllCacheValues() {}
+
+
+
+//Generating Cache Keys is next
+
