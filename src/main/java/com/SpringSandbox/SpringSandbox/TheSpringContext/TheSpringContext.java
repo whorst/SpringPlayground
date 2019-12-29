@@ -9,7 +9,7 @@ public class TheSpringContext {
     //==================================================================================================================
 
     /*When you see the below code in the Main method, you're creating anew Spring IoC Container, which is responsible
-    for the Beans lifecycles. It is also responsible for publishing certain types of events when loading the Beans. For
+    for the Beans lifecycle. It is also responsible for publishing certain types of events when loading the Beans. For
     example ContextStartedEvent is started when the Context is started. */
 
     //ApplicationContext ctxTwo = new ApplicationContext(ExampleClass.class);
