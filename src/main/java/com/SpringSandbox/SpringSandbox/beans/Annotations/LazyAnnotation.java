@@ -3,6 +3,7 @@ package com.SpringSandbox.SpringSandbox.beans.Annotations;
 //By default, the Spring IoC container creates and initializes all singleton beans at time of application startup.
 // We can prevent this pre-initialization of a singleton bean by using the @Lazy annotation.
 //https://www.javaguides.net/2018/10/spring-lazy-annotation-example.html
+//https://stackoverflow.com/questions/36175421/classic-singleton-vs-lazy-with-java-8-performance
 public class LazyAnnotation {
 
     /*
