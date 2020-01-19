@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class SimpleBookRepository implements BookRepository {
 
 
-  //This "@Cacheable(books) annotation is what enables cahching"
+  //This "@Cacheable(books) annotation is what enables caching"
   @Override
   @Cacheable("books")
   public Book getByIsbn(String isbn) {

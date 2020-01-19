@@ -9,6 +9,7 @@ import com.SpringSandbox.SpringSandbox.beans.NamedAutoWiring.AutoWiringOne;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+//import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -16,6 +17,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 @SpringBootApplication
+//@EnableFeignClients
 public class SpringSandboxApplication {
 
 	//To Research: Lazy Bean Initialization, The SpringSecurityContext, Qualifier Annotations, Bean Factories
@@ -26,9 +28,12 @@ public class SpringSandboxApplication {
 
 	public static void main(String[] args) {
 
+		//The Feign Client Dependencies cause the program to fail, need to investigate why. prolly has something to do with
+		//Spring Cloud
+
 		SpringApplication.run(SpringSandboxApplication.class, args);
 //		beans();
-		events();
+//		events();
 
 	}
 
