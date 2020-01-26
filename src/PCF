@@ -1,0 +1,17 @@
+https://docs.pivotal.io/pivotalcf/2-6/concepts/overview.html
+
+How PCF Works
+
+    Three Main Parts of PCF
+    ---------------------
+
+        BOSH - Creates and Deploys VMs on top of Physical Computing Infrastructure, deploys and runs PCF. BOSH requires a
+        manifest.
+
+        Cloud Controller - Runs the apps and processes on the cloud's VMs. Balances and manages app's life-cycles.
+
+        Gorouter - Responsible for routing traffic to the running VMs,
+
+    VMs in PCF
+    -----------
+
