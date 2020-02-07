@@ -38,3 +38,17 @@ https://www.youtube.com/watch?v=iyXne7dIn7U&list=PLqq-6Pq4lTTYTEooakHchTGglSvkZA
 
 https://www.youtube.com/watch?v=payxWrmF_0k&list=PLqq-6Pq4lTTYTEooakHchTGglSvkZAjnE&index=5 - Video 5
     -
+
+https://www.youtube.com/watch?v=caCJAJC41Rk&list=PLqq-6Pq4lTTYTEooakHchTGglSvkZAjnE&index=6 - Video 6
+    -Come back later
+
+https://www.youtube.com/watch?v=LKvrFltAgCQ&list=PLqq-6Pq4lTTYTEooakHchTGglSvkZAjnE&index=7
+    - Spring Boot -> Spring Security -> JPA -> MySQL for authentication
+    - Check if user is in DB and if the Credentials are correct
+    - Using MySql Create a DB called springsecurity and a table called user.
+
+https://www.youtube.com/watch?v=TNt3GHuayXs&list=PLqq-6Pq4lTTYTEooakHchTGglSvkZAjnE&index=8
+    - The columns will be username, password, active (if the user is active), and roles (column separated list of roles)
+    - https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-commands.html
+        -To start DB
+        -https://stackoverflow.com/questions/17426052/error-2003-hy000-cant-connect-to-mysql-server-on-localhost-10061

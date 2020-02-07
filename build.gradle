@@ -24,8 +24,11 @@ dependencies {
     //Adding the below dependency to the class path means that the sign in form gets auto generated. It adds a filter
     implementation 'org.springframework.boot:spring-boot-starter-security'
     
-//    implementation 'org.springframework.security:spring-security-test'
-//    compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.2.1.RELEASE'
+    implementation 'org.springframework.security:spring-security-test'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.2.1.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.2.1.RELEASE'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
+
 
 
 
