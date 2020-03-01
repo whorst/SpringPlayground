@@ -14,10 +14,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @SpringBootApplication
 //@EnableFeignClients
+@EnableJpaRepositories
 public class SpringSandboxApplication {
 
 	//To Research: Lazy Bean Initialization, The SpringSecurityContext, Qualifier Annotations, Bean Factories

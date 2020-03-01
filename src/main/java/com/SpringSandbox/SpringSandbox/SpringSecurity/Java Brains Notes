@@ -49,6 +49,8 @@ https://www.youtube.com/watch?v=LKvrFltAgCQ&list=PLqq-6Pq4lTTYTEooakHchTGglSvkZA
 
 https://www.youtube.com/watch?v=TNt3GHuayXs&list=PLqq-6Pq4lTTYTEooakHchTGglSvkZAjnE&index=8
     - The columns will be username, password, active (if the user is active), and roles (column separated list of roles)
+    - https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/?fbclid=IwAR2esmMcw8OmpMNXzqfKXX2zBTjhOx2XwOV2gbTPKpqnvtt7T_ZDD9p9KCQ#user-schema
+        - Our schema
     - https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-commands.html
         -To start DB
         -https://stackoverflow.com/questions/17426052/error-2003-hy000-cant-connect-to-mysql-server-on-localhost-10061

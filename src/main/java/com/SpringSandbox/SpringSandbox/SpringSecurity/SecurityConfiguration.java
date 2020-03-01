@@ -42,22 +42,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserDetailsService userDetailsService;
-
+//==========================7th Video=================================
     //H2 JDBC
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService); //Used to get user information, built in with spring. One has to create an instance of the userDetailsService
-        /*
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userDetailsService); //Used to get user information, built in with spring. One has to create an instance of the userDetailsService
+/*
         * Application.properties is the way in which you set up some external Data  you can use
         * spring.datasource.url=
         * spring.datasource.username=
         * spring.datasource.password=
         *
         * */
-        auth.jdbcAuthentication()
+//        auth.jdbcAuthentication()
                 //Check schema.sql in the resources folder to see how the Users table is spun and data.sql for
                 // populating the DB
-                .dataSource(dataSource);//Tells Spring Security to find your data source/jdbc db
+//                .dataSource(dataSource);//Tells Spring Security to find your data source/jdbc db
 //                .withDefaultSchema() //Spring will create your user table in your H2 DB
 //                .withUser(          //Creates a schema within the default H2 Data Source
 //                        User.withUsername("user")
@@ -69,16 +69,36 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                                .password("password")
 //                                .roles("ADMIN")
 //                );
+//
+//    }
+//
+//    @Bean
+//    public PasswordEncoder getPasswordEncoder(){
+//        //This not something I should be doing
+//        return NoOpPasswordEncoder.getInstance();
+//    }
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception{
+//        http.authorizeRequests()
+//                .antMatchers("/admin").hasRole("ADMIN") //Anyone has access
+//                .antMatchers("/user").hasAnyRole("ADMIN", "USER")       //Any request to any url can be accessed by someone with any role
+//                .antMatchers("/").permitAll()
+//                .and().formLogin();
+//    }
+//================================================================================================
 
-    }
 
-    @Bean
-    public PasswordEncoder getPasswordEncoder(){
-        //This not something I should be doing
-        return NoOpPasswordEncoder.getInstance();
-    }
+
+
+//============================8th Video================================
+
     @Override
-    protected void configure(HttpSecurity http) throws Exception{
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService);
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/admin").hasRole("ADMIN") //Anyone has access
                 .antMatchers("/user").hasAnyRole("ADMIN", "USER")       //Any request to any url can be accessed by someone with any role
@@ -86,6 +106,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().formLogin();
     }
 
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        //This not something I should be doing
+        return NoOpPasswordEncoder.getInstance();
+    }
+//=====================================================================
 }
 
 

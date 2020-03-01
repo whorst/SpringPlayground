@@ -15,6 +15,7 @@ public class MyUserDetails implements UserDetails {
     private boolean active;
     private List<GrantedAuthority> authorities;
 
+    //7th Video and 8th
     public MyUserDetails(User user){
         this.username = user.getUsername();
         this.password = user.getPassword();
@@ -23,6 +24,10 @@ public class MyUserDetails implements UserDetails {
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
 
+    }
+
+
+    public MyUserDetails(){
     }
 
     @Override
